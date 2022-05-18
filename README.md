@@ -35,3 +35,5 @@
 ### Validation and Error Handling
     • Validation (why and how, mongoose validation);
     • Error Handling.
+    
+# <a font-size:bold href="https://drive.google.com/drive/folders/1jNHRg1hssBN2Lecz4ShTUR-XeXWvNSoM?usp=sharing">Аll certificates here</a> 
