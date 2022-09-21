@@ -1,0 +1,55 @@
+{{#with data}}
+    <section id="details-page">
+        <article class="details-gage-title">
+            <h1>Details Page</h1>
+        </article>
+        <article class="details-page-card">
+
+            <article class="details-page-card-image">
+                <!-- Do not forget to change the path to the image -->
+                <img src="/static/img/man.png" alt="details-image">
+            </article>
+
+            <article class="details-page-card-content">
+                <p>Author: {{author.email}}</p>
+                <h2>Headline: {{headline}}</h2>
+                <h3>Company name: {{name}}</h3>
+                <h4>Company description: {{description}}</h4>
+                <h5>Location: {{location}}</h5>
+
+                <article class="details-page-card-buttons">
+                    <!--only for registered users and author of the ad-->
+                    {{#if isUser}}
+                        {{#if isOwner}}
+                            <a href="/edit/{{_id}}" class="btn-edit">Edit</a>
+                            <a href="/delete/{{_id}}" class="btn-delete">Delete</a>
+                        {{else}}
+                            {{#if isApply}}
+                                <!--logged in user who did not apply for current ad-->
+                                <p class="already-applied">You have already applied!</p>
+                            {{else}}
+                                <a href="/apply/{{_id}}" class="btn-apply">Apply now!</a>
+                                <p class="applied-people">Hurry up, {{candidates}} people have already applied.</p>
+                                <!--logged in user who has already applied for current ad-->
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
+                </article>
+            </article>
+
+        </article>
+    </section>
+    <!--This section should only be visible to the author of the current ad-->
+
+    {{#if isOwner}}
+        {{#if userApplied}}
+            <section id="info-about-candidates">
+                <h2>Candidates for this ad:</h2>
+                {{#each userApplied}}
+                    {{> candidat}}
+                {{/each}}
+            </section>
+        {{/if}}
+    {{/if}}
+
+{{/with}}
